@@ -3,6 +3,7 @@
 	<name>SoccerGame</name>
 	<comment></comment>
 	<projects>
+		<project>ParadoxEngine</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
