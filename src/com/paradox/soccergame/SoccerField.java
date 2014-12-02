@@ -13,7 +13,7 @@ public class SoccerField extends Sprite {
 	/**
 	 * Line width to use while drawing lines
 	 */
-	private final int LINE_WIDTH = 1;
+	private final int LINE_WIDTH = 2;
 	/**
 	 * Draw goal boxes
 	 */
