@@ -121,4 +121,19 @@ public class SoccerField extends Sprite {
 		drawBounds();
 		drawGoals();
 	}
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void input() {
+		// TODO Auto-generated method stub
+		
+	}
 }

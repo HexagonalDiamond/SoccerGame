@@ -97,4 +97,19 @@ public class Player extends Sprite {
 		renderPlayerName(posX, posY - 30, this.getName());
 		GL11.glPopAttrib();
 	}
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void input() {
+		// TODO Auto-generated method stub
+		
+	}
 }
