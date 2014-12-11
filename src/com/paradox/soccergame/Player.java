@@ -30,8 +30,8 @@ public class Player extends Sprite {
 	private String name;
 	private Position position;
 	private int team;
-	public Player(String name, Position pos, int team, Graphics g) {
-		super(g);
+	public Player(String name, Position pos, int team) {
+		super();
 		this.name = name;
 		this.position = pos;
 		this.team = team;
@@ -62,12 +62,12 @@ public class Player extends Sprite {
 	 */
 	private void renderPlayerName(int x, int y, String name) {
 		GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-		int width = 10 + graphics.font.getWidth(name);
-		int height = 10 + graphics.font.getHeight(name);
+		int width = 10 + Graphics.font.getWidth(name);
+		int height = 10 + Graphics.font.getHeight(name);
 		GL11.glColor4f(0.7f, 0.7f, 0.7f, 0.7f);
-		graphics.drawRect(x - (width / 2), y - (height / 2), width, height);
+		Graphics.drawRect(x - (width / 2), y - (height / 2), width, height);
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		graphics.drawText(name, x, y);
+		Graphics.drawText(name, x, y);
 		GL11.glPopAttrib();
 	}
 	
@@ -93,7 +93,7 @@ public class Player extends Sprite {
 			posX = (int) (offsetX + (650 - positionCoords.get(this.getPosition()).x));
 			posY = (int) (offsetY + (500 - positionCoords.get(this.getPosition()).y));
 		}
-		graphics.drawCircle(posX, posY, 10);
+		Graphics.drawCircle(posX, posY, 10);
 		renderPlayerName(posX, posY - 30, this.getName());
 		GL11.glPopAttrib();
 	}
