@@ -16,7 +16,7 @@ public class SoccerGame extends Game {
 	/**
 	 * Player names, positions, and teams
 	 */
-	private final Player[] players = {
+	public final Player[] players = {
 			new Player("Julian", Position.RIGHT_DEFENSE, 0),
 			new Player("Holden", Position.CENTER_DEFENSE, 0),
 			new Player("Tristan", Position.LEFT_DEFENSE, 0),
@@ -29,7 +29,7 @@ public class SoccerGame extends Game {
 			new Player("Random Guy 5", Position.GOALIE, 0),
 			new Player("Julian", Position.RIGHT_DEFENSE, 1),
 			new Player("Holden", Position.CENTER_DEFENSE, 1),
-			new Player("Tristan", Position.LEFT_DEFENSE, 1),
+			new Player("Tristan2", Position.LEFT_DEFENSE, 1),
 			new Player("Dad", Position.RIGHT_MID, 1),
 			new Player("Mom", Position.CENTER_MID, 1),
 			new Player("Random Guy 1", Position.LEFT_MID, 1),
@@ -47,26 +47,46 @@ public class SoccerGame extends Game {
 	}
 	
 	/**
-	 * Adds all players
+	 * Draws all players
 	 */
-	private void addPlayers() {
+	private void drawPlayers() {
 		for(Player p:this.players) {
-			gom.addObject(p);
+			p.draw();
+		}
+	}
+	/**
+	 * Updates all players
+	 */
+	private void updatePlayers() {
+		for(Player p:this.players) {
+			p.update(ball, players);
+		}
+	}
+	/**
+	 * Ticks all players
+	 */
+	private void tickPlayers() {
+		for(Player p:this.players) {
+			p.tick(ball);
 		}
 	}
 	
-	@Override
 	public void draw() {
 		GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_COLOR_BUFFER_BIT);
+		field.draw();
+		drawPlayers();
+		ball.draw();
 	}
 
 
-	@Override
 	public void update() {
+		if(this.frameNumber % 15 == 0) {
+			tickPlayers();
+		}
+		updatePlayers();
 		ball.move(100, 100, 100);
 	}
 
-	@Override
 	public void input() {
 		Keyboard.poll();
 		while(Keyboard.next()) {
@@ -76,12 +96,16 @@ public class SoccerGame extends Game {
 			}
 		}
 	}
-	@Override
 	public void initialize() {
 		field = new SoccerField();
-		gom.addObject(field);
 		ball = new Ball();
-		gom.addObject(ball);
-		addPlayers();
+	}
+	public static double distanceToBall(Player p, Ball b) {
+		double distance = Math.sqrt(Math.pow(p.x-b.x, 2) + Math.pow(p.y-b.y, 2));
+		return distance;
+	}
+	public SoccerGame() {
+		super();
+		initialize();
 	}
 }
